@@ -1,19 +1,19 @@
-import NewsList from "@/widgets/news/ui/NewsList/NewsList";
-import PaginationWrapper from "@/features/pagination/ui/Pagination/Pagination";
+import ProductsList from "@/widgets/products/ui/ProductsList/ProductsList";
+import PaginationWrapper from "@/feauters/pagination/ui/Pagination/Pagination";
 import { TOTAL_PAGES } from "@/shared/constants/constants";
 import { IFilters } from "@/shared/interfaces";
-import { INews } from "@/entities/news";
-import { usePaginationNews } from "../../utils/hooks/usePaginationNews";
+import { IProducts } from "@/entities/products";
+import { usePaginationProducts } from "../../utils/hooks/usePaginationProducts";
 
 interface Props {
   filters: IFilters;
-  news: INews[];
+  products: IProducts[];
   isLoading: boolean;
 }
 
-const NewsListWithPagination = ({ filters, news, isLoading }: Props) => {
+const ProductsListWithPagination = ({ filters, products, isLoading }: Props) => {
   const { handleNextPage, handlePreviousPage, handlePageClick } =
-    usePaginationNews(filters);
+    usePaginationProducts(filters);
 
   return (
     <PaginationWrapper
@@ -25,14 +25,14 @@ const NewsListWithPagination = ({ filters, news, isLoading }: Props) => {
       totalPages={TOTAL_PAGES}
       currentPage={filters.page_number}
     >
-      <NewsList
+      <ProductsList
         direction="column"
         type="item"
         isLoading={isLoading}
-        news={news}
+        products={products}
       />
     </PaginationWrapper>
   );
 };
 
-export default NewsListWithPagination;
+export default ProductsListWithPagination;

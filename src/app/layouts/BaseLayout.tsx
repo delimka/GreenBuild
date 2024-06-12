@@ -1,4 +1,3 @@
-import React from "react"; // Убедитесь, что React импортирован
 import Header from "@/widgets/header/ui/Header/Header";
 import { useTheme } from "@/app/providers/ThemeProvider";
 import { Outlet } from "react-router-dom";

@@ -1,13 +1,13 @@
-import LatestNews from "./LatestNews/LatestNews";
-import NewsByFilters from "./NewsByFilters/NewsByFilters";
+import LatestProducts from "./LatestProducts/LatestProducts";
+import ProductsByFilters from "./ProductsByFilters/ProductsByFilters";
 import styles from "./styles.module.css";
 
 const MainPage = () => {
   return (
     <main className={styles.main}>
-      <LatestNews />
+      <LatestProducts />
 
-      <NewsByFilters />
+      <ProductsByFilters />
     </main>
   );
 };

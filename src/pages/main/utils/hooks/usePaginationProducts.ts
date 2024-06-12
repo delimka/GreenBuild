@@ -1,9 +1,9 @@
 import { useAppDispatch } from "@/app/appStore";
-import { setFilters } from "@/entities/news/model/newsSlice";
+import { setFilters } from "@/entities/products/model/productsSlice";
 import { TOTAL_PAGES } from "@/shared/constants/constants";
 import { IFilters } from "@/shared/interfaces";
 
-export const usePaginationNews = (filters: IFilters) => {
+export const usePaginationProducts = (filters: IFilters) => {
   const dispatch = useAppDispatch();
 
   const handleNextPage = () => {

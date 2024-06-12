@@ -1,15 +1,15 @@
 import { useAppSelector } from "@/app/appStore";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-import { NewsDetails } from "@/entities/news";
+import ProductsDetails from "@/entities/products/ui/ProductDetails/ProductDetails";
 
-const NewsPage = () => {
-  const currentNews = useAppSelector((state) => state.news.currentNews);
+const ProductsPage = () => {
+  const currentProducts = useAppSelector((state) => state.products.currentProducts);
 
-  if (!currentNews) {
+  if (!currentProducts) {
     return (
       <div>
-        <h1>Cannot find news</h1>
+        <h1>Cannot find products</h1>
         <Link to={"/"}>
           <h3>Go to main page</h3>
         </Link>
@@ -17,12 +17,12 @@ const NewsPage = () => {
     );
   }
   return (
-    <main className={styles.news}>
-      <h1>{currentNews.title}</h1>
+    <main className={styles.products}>
+      <h1>{currentProducts.title}</h1>
 
-      <NewsDetails item={currentNews} />
+      <ProductsDetails item={currentProducts} />
     </main>
   );
 };
 
-export default NewsPage;
+export default ProductsPage;

@@ -1,34 +1,34 @@
-import { useGetLatestNewsQuery } from "@/entities/news/api/newsApi";
+import { useGetLatestProductsQuery } from "@/entities/products/api/api";
 import styles from "./styles.module.css";
-import { NewsList } from "@/widgets/news";
-import { INews } from "@/entities/news";
+import { ProductsList } from "@/widgets/products";
+import { IProducts } from "@/entities/products";
 import { useAppDispatch } from "@/app/appStore";
-import { setCurrentNews } from "@/entities/news/model/newsSlice";
+import { setCurrentProducts } from "@/entities/products/model/productsSlice";
 import { useNavigate } from "react-router-dom";
 
-const LatestNews = () => {
-  const { data, isLoading } = useGetLatestNewsQuery(null);
+const LatestProducts = () => {
+  const { data, isLoading } = useGetLatestProductsQuery(null);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const navigateTo = (news: INews) => {
-    dispatch(setCurrentNews(news));
-    navigate(`/news/${news.id}`);
+  const navigateTo = (products: IProducts) => {
+    dispatch(setCurrentProducts(products));
+    navigate(`/products/${products.id}`);
   };
 
   return (
     <section className={styles.section}>
-      <NewsList
+      <ProductsList
         type="banner"
         direction="row"
-        news={data && data.news}
+        products = {data && data.products}
         isLoading={isLoading}
-        viewNewsSlot={(news: INews) => (
-          <p onClick={() => navigateTo(news)}>view more...</p>
+        viewProductsSlot={(products: IProducts) => (
+          <p onClick={() => navigateTo(products)}>view more...</p>
         )}
       />
     </section>
   );
 };
 
-export default LatestNews;
+export default LatestProducts;

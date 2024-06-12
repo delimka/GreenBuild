@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IFilters } from "../../../shared/interfaces";
 import { PAGE_SIZE } from "../../../shared/constants/constants";
 import { IProducts } from "..";
@@ -12,7 +11,7 @@ interface State {
 
 const initialState: State = {
   products: [],
-  currentProduts: null,
+  currentProducts: null,
   filters: {
     page_number: 1,
     page_size: PAGE_SIZE,
@@ -21,15 +20,15 @@ const initialState: State = {
   },
 };
 
-export const newsSlice = createSlice({
-  name: "news",
+export const productsSlice = createSlice({
+  name: "products",
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<IProducts>[]) => {
+    setProducts: (state, action: PayloadAction<IProducts[]>) => {
       state.products = action.payload;
     },
-    setCurrentPrudcts: (state, action: PayloadAction<IProducts | null>) => {
-      state.currentNews = action.payload;
+    setCurrentProducts: (state, action: PayloadAction<IProducts | null>) => {  
+      state.currentProducts = action.payload;
     },
     setFilters: (
       state,
@@ -41,6 +40,6 @@ export const newsSlice = createSlice({
   },
 });
 
-export const { setProducts, setFilters, setCurrentProducts } = products.Slice.actions;
+export const { setProducts, setFilters, setCurrentProducts } = productsSlice.actions;
 
-export default newsSlice.reducer;
+export default productsSlice.reducer;

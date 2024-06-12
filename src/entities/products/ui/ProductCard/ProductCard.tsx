@@ -10,7 +10,7 @@ interface Props {
   viewProductsSlot?: (news: IProducts) => ReactNode;
 }
 
-const NewsCard = ({ item, type = "item", viewProductsSlot }: Props) => {
+const ProductsCard = ({ item, type = "item", viewProductsSlot }: Props) => {
   return (
     <li className={`${styles.card} ${type === "banner" && styles.banner}`}>
       {type === "banner" ? (
@@ -34,4 +34,4 @@ const NewsCard = ({ item, type = "item", viewProductsSlot }: Props) => {
   );
 };
 
-export default NewsCard;
+export default ProductsCard;

@@ -1,18 +1,18 @@
 import { useAppSelector } from "@/app/appStore";
 import { useDebounce } from "@/shared/hooks/useDebounce";
-import { useGetNewsQuery } from "@/entities/news/api/newsApi";
+import { useGetProductsQuery } from "@/entities/products/api/api";
 import styles from "./styles.module.css";
 import { useGetCategoriesQuery } from "@/entities/category/api/categoriesApi";
-import { NewsFilters } from "@/widgets/news";
-import NewsListWithPagination from "../NewsListWithPagination/NewsListWithPagination";
+import { ProductsFilters } from "@/widgets/products";
+import ProductsListWithPagination from "../ProductsListWithPagination/ProductsListWithPagination";
 
-const NewsByFilters = () => {
-  const filters = useAppSelector((state) => state.news.filters);
-  const news = useAppSelector((state) => state.news.news);
+const ProductsByFilters = () => {
+  const filters = useAppSelector((state) => state.products.filters);
+  const products = useAppSelector((state) => state.products.products);
 
   const debouncedKeywords = useDebounce(filters.keywords, 1500);
 
-  const { isLoading } = useGetNewsQuery({
+  const { isLoading } = useGetProductsQuery({
     ...filters,
     keywords: debouncedKeywords,
   });
@@ -20,15 +20,15 @@ const NewsByFilters = () => {
 
   return (
     <section className={styles.section}>
-      <NewsFilters filters={filters} categories={data?.categories || []} />
+      <ProductsFilters filters={filters} categories={data?.categories || []} />
 
-      <NewsListWithPagination
+      <ProductsListWithPagination
         isLoading={isLoading}
-        news={news}
+        products ={products}
         filters={filters}
       />
     </section>
   );
 };
 
-export default NewsByFilters;
+export default ProductsByFilters;
