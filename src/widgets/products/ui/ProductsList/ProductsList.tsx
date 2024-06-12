@@ -7,6 +7,7 @@ import ProductCard from "@/entities/products/ui/ProductCard/ProductCard";
 interface Props {
   products?: IProducts[];
   type?: "banner" | "item";
+  types?: "banner" | "item";
   direction?: "row" | "column";
   viewProductsSlot?: (products: IProducts) => ReactNode;
 }
